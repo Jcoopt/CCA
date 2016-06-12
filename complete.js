@@ -46,7 +46,7 @@ function preload() {
     game.load.audio("score", "point.ogg");
     game.load.image("pipe","pipe.png");
     game.load.image("start","start.png");
-    game.load.image("Restart","Restart.png");
+    game.load.image("Restart","restart.png");
     game.load.image("Heart","Heart.gif");
 
 }
