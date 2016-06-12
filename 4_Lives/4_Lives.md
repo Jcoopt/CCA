@@ -21,12 +21,12 @@ var roof = game.add.graphics(0, 0);
 This allows us to use the graphics drawing part of the Phaser library. Then we need to give it a colour and some points to move to:
 ```
 graphics.beginFill(0xBADA22);
-    graphics.moveTo(0,0);
-    graphics.lineTo(800, 0);
-    graphics.lineTo(800, 50);
-    graphics.lineTo(0, 50);
-    graphics.lineTo(0, 0);
-    graphics.endFill();
+    roof.moveTo(0,0);
+    roof.lineTo(800, 0);
+    roof.lineTo(800, 50);
+    roof.lineTo(0, 50);
+    roof.lineTo(0, 0);
+    roof.endFill();
 ```
 graphics.beginFill(colour) tells the program we are about to draw a shape and that we want it filled with the colour given. `graphics.moveto(x,y)` moves the "pen" to a position, in this case the top left corner, but doesn't draw anything. `graphics.lineTo(x,y)` draws a line between where the pen was and the position given. `graphics.endFill();` ends the drawing and fills in the shape.Thats it!
 
@@ -45,7 +45,7 @@ function loseLife(){
     }
 ```
 The entire contents of this function is placed in an if statement that checks the deathDelay variable, so that a life is only lost if the player isn't invincible, and then removes a life. The last line is similar to something you met when creating the pipes, a timed event. That event was looped, and so began `game.time.events.loop`. we only want the delay to happen once after each death, so  `game.time.events.add();`
-is used instead. To complete this, in `function overlap` change where we call gameOver() to loselife(), so the function is:
+is used instead. To complete this, in `function overlap()` change where we call gameOver to loselife, so the function is:
 ```
 function overlap(){
     game.physics.arcade
@@ -58,9 +58,6 @@ The last function needed for your lives system is one that checks if there are z
 ```
 function lifeCheck(){
   if(lives==0){
-      Heart1.visible=false
-      Heart2.visible=false
-      Heart3.visible=false
       gameOver()}
    }
 ```  
