@@ -41,7 +41,7 @@ else if(lives==3){
 ```
 In this, `.visible` is known as a property of each sprite. Setting it to false makes the sprite invisible, setting it true makes it visible. When you run the program now, each time the player loses a life one of the the hearts dissapears, showing how many lives they have left.
 
-last christmas i gave you full hearts: Refilling the lives counter
+Refilling the lives counter
 ================
 So far the player has only been able to lose life which is better than instant death, but doesnt reward them for playing as long as possible. With only a handfull of lines, your game will be able to givce the player back some life after passing a certain number of pipes- you can make this number as small (making the game easier) or large (making it harder) as you want. simply add to the end of`function changeScore()`:
 
