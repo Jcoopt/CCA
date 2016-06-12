@@ -12,9 +12,9 @@ In `function generatePipe()` change the line `addPipeBlock(750, count * 50);` to
 
 Hiding the magic
 ----------------
-Now the pipes have been moved down, their tops are visible, which ruins the effect that the player needs to go through the gaps- why not just jump over the very top? By drawing  a rectangle with 800 by 50 will cover the gap and by changing it to a colour differing to the background, a roof is created and the illusion that the player is travelling down a tunnel is returned.
+Now the pipes have been moved down, their tops are visible, which ruins the effect that the player needs to go through the gaps- why not just jump over the very top? By drawing  a rectangle with 800 by 50 will cover the gap and by changing it to a colour differing to the background, a roof is created and the illusion that the player is traveling down a tunnel is returned.
 
-The roof rectangle will only be used by the gameCode function, so we can declare it at the top of that:
+The roof rectangle will only be used by the gameCode() function, so we can declare it at the top of that:
 ```
 var roof = game.add.graphics(0, 0);
 ```
@@ -28,12 +28,12 @@ graphics.beginFill(0xBADA22);
     graphics.lineTo(0, 0);
     graphics.endFill();
 ```
-graphics.beginFill(colour) tells the program we are about to draw a shape and that we want it filled with the colour given. `graphics.moveto(x,y)` moves the "pen" to a position, in this case the top left corner, but doesn't draw anything. `graphics.lineTo(x,y)` draws a line between where the pen was and the positiion given. `graphics.endFill();` ends the drawing and fills in the shape.Thats it!
+graphics.beginFill(colour) tells the program we are about to draw a shape and that we want it filled with the colour given. `graphics.moveto(x,y)` moves the "pen" to a position, in this case the top left corner, but doesn't draw anything. `graphics.lineTo(x,y)` draws a line between where the pen was and the position given. `graphics.endFill();` ends the drawing and fills in the shape.Thats it!
 
 Lives system
 ---------------------
 ##### Its a-live!(or three)
-For the lives system, first declare a variable `lives` at the top of the program to keep track of the number of lives the player has.To make it easier for the player we are going to give them a few seconds of invinsibiilty when they lose a life, so that they can get back into the "rhythm" of the game, so also declare a variable called deathDelay as well.The number of lives and the deathDelay needs to be reset at the beggining of each game, so add `lives=3` and `deathDelay=false` to the top of `function create()`. Create a new function `resetDelay()` and add `deathDelay=false` to the top of that as well. this will allow us to reset the delay in a similar way to how the click handlers worked. Then add `deathDelay=false`to the top of `function gameOver()` for cases where the player crosses the top or bottom boundary while invincible.
+For the lives system, first declare a variable `lives` at the top of the program to keep track of the number of lives the player has.To make it easier for the player we are going to give them a few seconds of invincibility when they lose a life, so that they can get back into the "rhythm" of the game, so also declare a variable called deathDelay as well.The number of lives and the deathDelay needs to be reset at the beginning of each game, so add `lives=3` and `deathDelay=false` to the top of `function create()`. Create a new function `resetDelay()` and add `deathDelay=false` to the top of that as well. this will allow us to reset the delay in a similar way to how the click handlers worked. Then add `deathDelay=false`to the top of `function gameOver()` for cases where the player crosses the top or bottom boundary while invincible.
 
 Next a new function is needed for lowering the lives left by one and should look like this:
 ```
@@ -44,7 +44,7 @@ function loseLife(){
     game.time.events.add(Phaser.Timer.SECOND * 3, resetDelay, this);
     }
 ```
-The entire contents of this function is placed in an if statement that checks the deathDelay variable, so that a life is only lost if the player isnt invincible, and then removes a life. The last line is similar to somethiong you met when creating the pipes, a timed event. That event was looped, and so began `game.time.events.loop`. we only want the delay to happen once after each death, so  `game.time.events.add();`
+The entire contents of this function is placed in an if statement that checks the deathDelay variable, so that a life is only lost if the player isn't invincible, and then removes a life. The last line is similar to something you met when creating the pipes, a timed event. That event was looped, and so began `game.time.events.loop`. we only want the delay to happen once after each death, so  `game.time.events.add();`
 is used instead. To complete this, in `function overlap` change where we call gameOver() to loselife(), so the function is:
 ```
 function overlap(){
@@ -54,7 +54,7 @@ function overlap(){
                  loseLife);
 ```
 
-The last function needed for your lives system is one that checks if there are zero lives left, and if so ends the game. this function will be extened later, but for now only needs to be:
+The last function needed for your lives system is one that checks if there are zero lives left, and if so ends the game. this function will be extended later, but for now only needs to be:
 ```
 function lifeCheck(){
   if(lives==0){
@@ -64,4 +64,4 @@ function lifeCheck(){
       gameOver()}
    }
 ```  
-The only place where the number of lives changes is during the loseLife function, so after the if statement add `lifeCheck()` to this function When you run the program you will notice that the game doesn't end after hitting a pipe, but will if you hit 3.   
+The only place where the number of lives changes is during the loseLife() function, so after the if statement add `lifeCheck()` to this function When you run the program you will notice that the game doesn't end after hitting a pipe, but will if you hit 3.   

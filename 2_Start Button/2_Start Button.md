@@ -1,6 +1,6 @@
 Getting things started right
 ============================
-when you load up your game it will at the moment jump straight into running the game. If you're not ready for this, you may end up losing quite quickly! to rectify this we are going to add a start screen.
+When you load up your game it will at the moment jump straight into running the game. If you're not ready for this, you may end up losing quite quickly! to rectify this we are going to add a start screen.
 
 The start screen will be the first thing the player should see, and so we need to edit `function create()` so it sets up the start screen, and have the game loaded when the player is ready. Create a new function for for all your game code :
 ```
@@ -8,7 +8,7 @@ function gameCode(){
 
   }`
 ```
-Then move over all of your code from `function create()` except `game.stage.setBackgroundColor("#A3D3A3")`(your colour code maybe different), as we still need to give the background of your loading screen a colour. If you really wanted you could have this line in both  `function create()` and `function gamreCode()` but with a different colour code in each, making the two look slightly more distinctive, but this isn't necessary . Your final code should look a little like this:
+Then move over all of your code from `function create()` except `game.stage.setBackgroundColor("#A3D3A3")`(your colour code maybe different), as we still need to give the background of your loading screen a colour. If you really wanted you could have this line in both  `function create()` and `function gameCode()` but with a different colour code in each, making the two look slightly more distinctive, but this isn't necessary . Your final code should look a little like this:
 ```
 function GameCode(){
       game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -51,7 +51,7 @@ function Clicked(){
         gameCode();
 }
 ```
-This sets our clicked tracker to true, as the sprite has indeed been clicked. It then destroys the start button( as it isn't needed anymore and will only get in the way) and starts the game. `function update()` also needs to be changed so that it only updates the game once it has been started. As `clicked` will be `true` when the game is started, you can use this and an if statement:
+This sets our clicked tracker to true, as the sprite has indeed been clicked. It then destroys the start button (as it isn't needed anymore and will only get in the way) and starts the game. `function update()` also needs to be changed so that it only updates the game once it has been started. As `clicked` will be `true` when the game is started, you can use this and an if statement:
 ```
 function update() {
   if (clicked==true){
